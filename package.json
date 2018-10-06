@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@mahjongg/mern-mvc": "^1.4.0"
+  }
+}
