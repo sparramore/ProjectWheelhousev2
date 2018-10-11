@@ -19,23 +19,25 @@ export default class KnowledgeList extends Component  {
         API.getKnowledges().then( res => 
         {
             this.setState({KnowledgeList:res.data});
-            console.log(this.state.KnowledgeList);
-            for(var i = 0;i < this.state.KnowledgeList.length;i++)
-            {
-               
-            }
         });
-        //getting all of the knowledge out of the database.
 
-        console.log("hello");
-        // //going through the loop of all of the knowledge items
+      }
 
+      createBubbles = () => {
+        let table = []
+        for (let i = 0; i < this.state.KnowledgeList.length; i++)
+        {
+            console.log(this.state.KnowledgeList[i].Skill);
+            table.push(<KnowledgeBubble skill={this.state.KnowledgeList[i].Skill} description ={this.state.KnowledgeList[i].SkillDescription}></KnowledgeBubble>);
+        }
+        return table
       }
 
     render (){
         return(
             <div>
-          </div>
+                {this.createBubbles()}
+            </div>
         )
 
     }

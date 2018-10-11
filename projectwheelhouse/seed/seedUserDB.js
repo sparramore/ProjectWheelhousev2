@@ -5,7 +5,7 @@ const db = require("../models/user/");
 
 mongoose.connect(
   process.env.MONGODB_URI ||
-  "mongodb://localhost/UserList"
+  "mongodb://localhost/User"
 );
 
 
@@ -18,31 +18,31 @@ mongoose.connect(
 
 const UserSeed = [
 {
-    UserName: "c++",
+    UserName: "Steve@gmail.com",
+    Password: "pass"
+},
+{
+    UserName: "sadasd",
     Password: "general purpose OOP language"
 },
 {
-    UserName: "c++",
+    UserName: "ad++",
     Password: "general purpose OOP language"
 },
 {
-    UserName: "c++",
+    UserName: "adadad++",
     Password: "general purpose OOP language"
 },
 {
-    UserName: "c++",
+    UserName: "adadaadada++",
     Password: "general purpose OOP language"
 },
 {
-    UserName: "c++",
+    UserName: "cadadadadada",
     Password: "general purpose OOP language"
 },
 {
-    UserName: "c++",
-    Password: "general purpose OOP language"
-},
-{
-    UserName: "c++",
+    UserName: "cadadadadad++",
     Password: "general purpose OOP language"
 },
 ]
@@ -56,6 +56,6 @@ db.User
     process.exit(0);
   })
   .catch(err => {
-    console.error(err);
+    console.error("ERROR: " + err);
     process.exit(1);
   });

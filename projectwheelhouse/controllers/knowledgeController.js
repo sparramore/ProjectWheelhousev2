@@ -4,9 +4,12 @@ const db = require("../models/knowledge/");
 module.exports = {
     findAll: function(req, res) {
       db.Knowledge
-        .find(req.query)
+        .find( {})
         .sort("asc")
-        .then(dbModel => res.json(dbModel))
+        .then(function(dbModel){
+          res.json(dbModel);
+          
+        })
         .catch(err => res.status(422).json(err));
     },
     findById: function(req, res) {

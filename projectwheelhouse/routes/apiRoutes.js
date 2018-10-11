@@ -6,8 +6,8 @@ module.exports = function (passport) {
 
 
 	//add any API routes here
-	router.route("/user")
-		.get(userController.findAll)
+	router.get("/user", userController.findAll)
+		
 	
 	router.route("/knowledges")
 	.get(knowledgeController.findAll)

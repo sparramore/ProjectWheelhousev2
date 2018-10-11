@@ -13,6 +13,7 @@ import NoMatch from "./pages/NoMatch";
 import Dashboard from "./components/Dashboard/Dashboard";
 import UserList from "./components/UserList/userList";
 import Knowledge from "./components/KnowledgeList/KnowledgeList";
+import Bubble from "./components/KnowledgeList/KnowledgeBubble";
 
 class App extends Component {
   state = {
