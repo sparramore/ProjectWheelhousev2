@@ -37,6 +37,7 @@ export default class KnowledgeList extends Component  {
         return(
             <div>
                 {this.createBubbles()}
+                making a changes just so i can push to git again.
             </div>
         )
 
