@@ -40,8 +40,12 @@ export default class KnowledgeList extends Component  {
         {
             let rowId = `row${i}`;
             let cell = [];
+            console.log("in first for loop");
             for (var idx = 0; idx < this.state.KnowledgeList.length/2; idx++){
-                let cellID = `cell${i}-${idx}`
+                console.log("counter: " + counter);
+                console.log("idx: " + idx);
+                let cellID = `cell${i}-${idx}`;
+                console.log("cellID :" + cellID);                
                 cell.push(<td key={cellID} id={cellID}><KnowledgeBubble skill={this.state.KnowledgeList[counter].Skill} description ={this.state.KnowledgeList[counter].SkillDescription}></KnowledgeBubble></td>)
                 counter++;
             }
