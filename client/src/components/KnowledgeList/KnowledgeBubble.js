@@ -18,6 +18,11 @@ const styles = {
   },
 };
 
+function HandleClick()
+{
+
+}
+
 function MediaCard(props) {
   const { classes } = props;
   return (
@@ -25,8 +30,6 @@ function MediaCard(props) {
       <CardActionArea>
         <CardMedia
           className={classes.media}
-          image="/static/images/cards/contemplative-reptile.jpg"
-          title="Contemplative Reptile"
         />
         <CardContent>
           <Typography gutterBottom variant="headline" component="h2">
@@ -38,12 +41,6 @@ function MediaCard(props) {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary">
-          Share
-        </Button>
-        <Button size="small" color="primary">
-          Learn More
-        </Button>
       </CardActions>
     </Card>
   );

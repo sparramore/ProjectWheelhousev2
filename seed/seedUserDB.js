@@ -5,7 +5,7 @@ const db = require("../models/user/");
 
 mongoose.connect(
   process.env.MONGODB_URI ||
-  "mongodb://localhost/User"
+  "mongodb://localhost/KnowledgeList"
 );
 
 

@@ -34,11 +34,26 @@ export default class KnowledgeList extends Component  {
       }
 
     render (){
+        let rows = [];
+        let counter = 0;
+        for(var i = 0;i < 2;i++)
+        {
+            let rowId = `row${i}`;
+            let cell = [];
+            for (var idx = 0; idx < this.state.KnowledgeList.length/2; idx++){
+                let cellID = `cell${i}-${idx}`
+                cell.push(<td key={cellID} id={cellID}><KnowledgeBubble skill={this.state.KnowledgeList[counter].Skill} description ={this.state.KnowledgeList[counter].SkillDescription}></KnowledgeBubble></td>)
+                counter++;
+            }
+            rows.push(<tr key={i} id={rowId}>{cell}</tr>)
+        }
+        
         return(
-            <div>
-                {this.createBubbles()}
-                making a changes just so i can push to git again.
-            </div>
+<table id="simple-board">
+               <tbody>
+                 {rows}
+               </tbody>
+</table>              
         )
 
     }
