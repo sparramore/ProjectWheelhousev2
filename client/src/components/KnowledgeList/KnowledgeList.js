@@ -52,6 +52,7 @@ export default class KnowledgeList extends Component  {
 <table id="simple-board">
                <tbody>
                  {rows}
+                 blerh
                </tbody>
 </table>              
         )
