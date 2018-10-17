@@ -42,6 +42,7 @@ export default class KnowledgeList extends Component  {
         {
             let rowId = `row${i}`;
             let cell = [];
+            console.log(this.state.KnowledgeList);
             console.log("in first for loop");
             console.log("length: " + this.state.KnowledgeList.length);
             for (var idx = 0; idx < this.state.KnowledgeList.length/2; idx++){
