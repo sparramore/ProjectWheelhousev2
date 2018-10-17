@@ -11,7 +11,10 @@ module.exports = {
           res.json(dbModel);
           
         })
-        .catch(err => res.status(422).json(err));
+        .catch(err => {
+          res.status(422).json(err)
+          console.log("database error :" + err);
+        });
     },
     findById: function(req, res) {
       db.Knowledge
