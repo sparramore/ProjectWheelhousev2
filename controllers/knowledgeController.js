@@ -3,6 +3,7 @@ const db = require("../models/knowledge/");
 
 module.exports = {
     findAll: function(req, res) {
+      console.log("finding all");
       db.Knowledge
         .find( {})
         .sort("asc")
