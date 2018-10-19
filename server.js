@@ -31,6 +31,7 @@ mongoose.Promise = global.Promise;
 mongoose.connect(
   process.env.MONGODB_URI || "mongodb://localhost/KnowledgeList"
 );
+console.log("process.env: " + process.env.MONGODB_URI);
 
 // Start the API server
 app.listen(PORT, function() {
