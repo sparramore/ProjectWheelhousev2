@@ -19,26 +19,29 @@ const styles = theme => ({
 });
 
 class MenuListComposition extends React.Component {
-  state = {
-    open: false,
-  };
-
-  handleToggle = () => {
-    this.setState(state => ({ open: !state.open }));
-  };
-
-  handleClose = event => {
-    if (this.anchorEl.contains(event.target)) {
-      return;
+    constructor(props)
+    {
+        super(props);
+        this.OnChangeFunction = this.OnChangeFunction.bind(this);
     }
 
-    this.setState({ open: false });
-  };
+    handleClose = event =>
+    {
+        if(this.anchorEl.contains(event.target))
+        {
+            return;
+        }
+    }
+
+    OnChangeFunction(value)
+    {
+        console.log("item changed");
+        console.log(value);
+        this.props.MenuSelection(value);
+    }
 
   render() {
     const { classes } = this.props;
-    const { open } = this.state;
-
     return (
       <div className={classes.root}>
         <div>
@@ -46,13 +49,13 @@ class MenuListComposition extends React.Component {
             buttonRef={node => {
               this.anchorEl = node;
             }}
-            aria-owns={open ? 'menu-list-grow' : null}
+            aria-owns={this.props.open ? 'menu-list-grow' : null}
             aria-haspopup="true"
-            onClick={this.handleToggle}
+            onClick={this.props.toggleButton}
           >
-            Toggle Menu Grow
+            Menu
           </Button>
-          <Popper open={open} anchorEl={this.anchorEl} transition disablePortal>
+          <Popper open={this.props.open} anchorEl={this.anchorEl} transition disablePortal>
             {({ TransitionProps, placement }) => (
               <Grow
                 {...TransitionProps}
@@ -60,11 +63,11 @@ class MenuListComposition extends React.Component {
                 style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}
               >
                 <Paper>
-                  <ClickAwayListener onClickAway={this.handleClose}>
-                    <MenuList>
-                      <MenuItem onClick={this.handleClose}>Profile</MenuItem>
-                      <MenuItem onClick={this.handleClose}>My account</MenuItem>
-                      <MenuItem onClick={this.handleClose}>Logout</MenuItem>
+                  <ClickAwayListener onClickAway={this.props.HandleClick}>
+                    <MenuList >
+                      <MenuItem onClick={() => this.OnChangeFunction(0)}>Profile</MenuItem>
+                      <MenuItem onClick={() => this.OnChangeFunction(1)}>My account</MenuItem>
+                      <MenuItem onClick={() => this.OnChangeFunction(2)}>Logout</MenuItem>
                     </MenuList>
                   </ClickAwayListener>
                 </Paper>

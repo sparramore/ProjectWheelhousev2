@@ -7,10 +7,18 @@ import Dropdown from "../DropDown/dropdown"
 
 
 
-export default class Dashboard extends Component {
+export default class Dashboard extends React.Component {
 
+	constructor(props)
+	{
+		super(props);
+	}
 	componentDidMount() {
 
+	}
+
+	HandleClose()
+	{
 	}
 
 	render() {
@@ -18,7 +26,7 @@ export default class Dashboard extends Component {
 			<div>
 				<AppBar>
 					<Toolbar>
-						<Dropdown></Dropdown>
+						<Dropdown HandleClick={this.props.MenuClick} open={this.props.open} toggleButton={this.props.toggleButton} MenuSelection={this.props.MenuSelection}></Dropdown>
 						<Typography variant="headline">
 							Project Wheelhouse
 						</Typography>
