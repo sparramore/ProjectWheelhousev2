@@ -5,10 +5,10 @@ module.exports = {
     findAll: function(req, res) {
       console.log("finding all");
       db.Knowledge
-        .find( {})
+        .find({})
         .sort("asc")
         .then(function(dbModel){
-          console.log(dbModel);
+          console.log("dbModel:" + dbModel);
           res.json(dbModel);
           
         })
