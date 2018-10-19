@@ -4,6 +4,7 @@ module.exports = function (passport) {
 	const router = require('express').Router();
 
 	router.get("/isAuthenticated",function(req,res){
+		console.log("isauthenticated");
 		if (req.isAuthenticated()){
 			res.json({
 				userId: req.user._id,
@@ -23,6 +24,7 @@ module.exports = function (passport) {
 	});
 
 	router.post("/signup",function(req,res){
+		console.log("signup");
 		const newUser = req.body;
 		User.register(newUser,newUser.password,(err,user)=>{
 			if (err){ return res.json(err.message); }
@@ -35,7 +37,7 @@ module.exports = function (passport) {
 	});
 
 	router.post("/signin",passport.authenticate('local') ,function(req,res){
-		// console.log(req.user);
+		 console.log(req.user);
 		res.json({
 			userId: req.user._id,
 			username: req.user.username,

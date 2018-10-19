@@ -8,6 +8,7 @@ module.exports = {
         .find( {})
         .sort("asc")
         .then(function(dbModel){
+          console.log(dbModel);
           res.json(dbModel);
           
         })
