@@ -47,21 +47,21 @@ export default class Home extends React.Component {
 
 	Rendermain= () => 
 	{
-	if(this.state.currentState == 0)
+	if(this.state.currentState == 1)
 	{
 		console.log("got into if");
 		return(
 		<div>
-			<Dashboard MenuClick={this.handleMenuCick} open={this.state.open} toggleButton={this.toggleButton} />
+			<Dashboard MenuClick={this.handleMenuCick} open={this.state.open} toggleButton={this.toggleButton} MenuSelection={this.handleMenuSelection} />
 			<KnowledgeList ObjectClick={this.handleObjectClick} />
 		</div>);
 	}
-	else if(this.state.currentState == 1) 
+	else if(this.state.currentState == 0) 
 	{
 		console.log("getting into about");
 		return(
 		<div>
-			<Dashboard MenuClick={this.handleMenuCick} open={this.state.open} toggleButton={this.toggleButton} />
+			<Dashboard MenuClick={this.handleMenuCick} open={this.state.open} toggleButton={this.toggleButton} MenuSelection={this.handleMenuSelection} />
 			<About />
 		</div>);
 	}
