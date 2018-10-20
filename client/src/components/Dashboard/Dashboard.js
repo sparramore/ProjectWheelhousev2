@@ -1,13 +1,18 @@
 import React, { Component } from "react";
-import "./Dashboard.css";
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Dropdown from "../DropDown/dropdown"
+import { withStyles } from "@material-ui/core/styles";
+import PropTypes from 'prop-types';
 
 
+const appStyle = {
+	position: 'relative'
+  };
 
-export default class Dashboard extends React.Component {
+
+class Dashboard extends React.Component {
 
 	constructor(props)
 	{
@@ -23,17 +28,18 @@ export default class Dashboard extends React.Component {
 
 	render() {
 		return (
-			<div>
-				<AppBar>
-					<Toolbar>
-						<Dropdown HandleClick={this.props.MenuClick} open={this.props.open} toggleButton={this.props.toggleButton} MenuSelection={this.props.MenuSelection}></Dropdown>
-						<Typography variant="headline">
-							Project Wheelhouse
-						</Typography>
-					</Toolbar>
-				</AppBar>
-			</div>
+			
+			<AppBar style={appStyle}>
+				<Toolbar>
+					<Dropdown HandleClick={this.props.MenuClick} open={this.props.open} toggleButton={this.props.toggleButton} MenuSelection={this.props.MenuSelection}></Dropdown>
+					<Typography variant="headline">
+						Project Wheelhouse
+					</Typography>
+				</Toolbar>
+			</AppBar>
 		);
 	}
 
 };
+
+export default (Dashboard)

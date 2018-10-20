@@ -1,13 +1,4 @@
-#DashboardHeader
+.AppBar
 {
-    background-color: black;
-    -webkit-box-flex: 1;
-    -ms-flex-positive: 1;
-    flex-grow: 1;
-    -ms-flex-negative: 0;
-}
-
-.bs-example{
-    margin: 20px;
-    background: black;
+    position: 'relative';
 }

@@ -2,25 +2,16 @@ import React, { Component } from "react";
 import "./style.css";
 import Dashboard from "../Dashboard/Dashboard"
 import KnowledgeList from "../KnowledgeList/KnowledgeList"
+import About from '../About/About'
+import Grid from '@material-ui/core/Grid';
+import GridList from '@material-ui/core/GridList';
+import GridTile from '@material-ui/core/GridListTile';
+
+import Button from '@material-ui/core/Button'
+import { AppBar } from "@material-ui/core";
 
 
-function Rendermain(props)
-{
-	console.log("currentState: " + props.state)
-	if(props.state== 0)
-	{
-		console.log("got into if");
-		return(<KnowledgeList></KnowledgeList>);
-	}
-	else if(props.state == 1) 
-	{
-		return null;
-	}
-	else if(props.state == 2)
-	{
-		return null;
-	}
-}
+
 
 export default class Home extends React.Component {
 
@@ -31,7 +22,7 @@ export default class Home extends React.Component {
 		this.toggleButton = this.toggleButton.bind(this);
 		this.handleMenuCick = this.handleMenuCick.bind(this);
 		this.handleMenuSelection = this.handleMenuSelection.bind(this);
-		Rendermain = Rendermain.bind(this);
+		this.Rendermain = this.Rendermain.bind(this);
 	}
 
 	handleMenuCick()
@@ -52,15 +43,40 @@ export default class Home extends React.Component {
 		this.setState(state => ({ open: !state.open }));
 	}
 
+	
 
+	Rendermain= () => 
+	{
+	if(this.state.currentState == 0)
+	{
+		console.log("got into if");
+		return(
+		<div>
+			<Dashboard MenuClick={this.handleMenuCick} open={this.state.open} toggleButton={this.toggleButton} />
+			<KnowledgeList ObjectClick={this.handleObjectClick} />
+		</div>);
+	}
+	else if(this.state.currentState == 1) 
+	{
+		console.log("getting into about");
+		return(
+		<div>
+			<Dashboard MenuClick={this.handleMenuCick} open={this.state.open} toggleButton={this.toggleButton} />
+			<About />
+		</div>);
+	}
+	else if(this.state.currentState == 2)
+	{
+		return null;
+	}
+}
 
 	render(){
 
-		return (
+		return (	
 			<div>
-				<Dashboard MenuClick={this.handleMenuCick} open={this.state.open} toggleButton={this.toggleButton} MenuSelection={this.handleMenuSelection}> </Dashboard>
-				<Rendermain state={this.state.currentState}></Rendermain>
-			</div>
+				{this.Rendermain()}
+			</div>				
 		);
 	}
 
