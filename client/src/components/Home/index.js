@@ -3,9 +3,7 @@ import "./style.css";
 import Dashboard from "../Dashboard/Dashboard"
 import KnowledgeList from "../KnowledgeList/KnowledgeList"
 import About from '../About/About'
-import Grid from '@material-ui/core/Grid';
-import GridList from '@material-ui/core/GridList';
-import GridTile from '@material-ui/core/GridListTile';
+import Article from '../Articles/Articles'
 
 import Button from '@material-ui/core/Button'
 import { AppBar } from "@material-ui/core";
@@ -67,7 +65,12 @@ export default class Home extends React.Component {
 	}
 	else if(this.state.currentState == 2)
 	{
-		return null;
+		console.log("getting into about");
+		return(
+		<div>
+			<Dashboard MenuClick={this.handleMenuCick} open={this.state.open} toggleButton={this.toggleButton} MenuSelection={this.handleMenuSelection} />
+			<Article />
+		</div>);
 	}
 }
 
