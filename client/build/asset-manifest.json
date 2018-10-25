@@ -1,6 +1,9 @@
 {
   "main.css": "static/css/main.37734f4b.css",
   "main.css.map": "static/css/main.37734f4b.css.map",
-  "main.js": "static/js/main.e312d804.js",
-  "main.js.map": "static/js/main.e312d804.js.map"
+  "main.js": "static/js/main.f48e9ef5.js",
+  "main.js.map": "static/js/main.f48e9ef5.js.map",
+  "static\\media\\c.png": "static/media/c.a45ab95f.png",
+  "static\\media\\php.png": "static/media/php.bd7ab574.png",
+  "static\\media\\sql.png": "static/media/sql.eb745847.png"
 }

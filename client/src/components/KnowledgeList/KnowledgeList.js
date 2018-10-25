@@ -30,10 +30,8 @@ export default class KnowledgeList extends Component  {
     }
     
     componentDidMount() {
-        console.log("component mounted");
         API.getKnowledges().then( res => 
         {
-            console.log("setting the state");
             this.setState({KnowledgeList:res.data});
         });
 
@@ -46,36 +44,28 @@ export default class KnowledgeList extends Component  {
         {
             let rowId = `row${i}`;
             let cell = [];
-            console.log(this.state.KnowledgeList);
-            console.log("in first for loop");
-            console.log("length: " + this.state.KnowledgeList.length);
             for (var idx = 0; idx < this.state.KnowledgeList.length/2; idx++){
-                console.log("counter: " + counter);
-                console.log("idx: " + idx);
                 let cellID = `cell${i}-${idx}`;
-                console.log("cellID :" + cellID);
                 if(type == false)
                 {
                     if(this.state.KnowledgeKnownClicked.includes(counter))
                     {
-                        console.log("Red Item: " + counter);
-                        cell.push(<td key={cellID} ><KnowledgeBubble ObjectClick={this.HandleKnownClick} skill={this.state.KnowledgeList[counter].Skill} description ={this.state.KnowledgeList[counter].SkillDescription } id={counter} backgroundColor="red"></KnowledgeBubble></td>)
+                        cell.push(<td key={cellID} ><KnowledgeBubble ObjectClick={this.HandleKnownClick} skill={this.state.KnowledgeList[counter].Skill} description ={this.state.KnowledgeList[counter].SkillDescription } id={counter} imageLink={this.state.KnowledgeList[counter].ImageLink} backgroundColor="red"></KnowledgeBubble></td>)
                     }
                     else
                     {
-                        cell.push(<td key={cellID} ><KnowledgeBubble ObjectClick={this.HandleKnownClick}  skill={this.state.KnowledgeList[counter].Skill} description ={this.state.KnowledgeList[counter].SkillDescription } id={counter} backgroundColor="white"></KnowledgeBubble></td>)
+                        cell.push(<td key={cellID} ><KnowledgeBubble ObjectClick={this.HandleKnownClick}  skill={this.state.KnowledgeList[counter].Skill} description ={this.state.KnowledgeList[counter].SkillDescription } id={counter} imageLink={this.state.KnowledgeList[counter].ImageLink} backgroundColor="white"></KnowledgeBubble></td>)
                     }   
                 }
                 else
                 {
                     if(this.state.KnowledgeUnknownClick.includes(counter))
                     {
-                        console.log("Red Item: " + counter);
-                        cell.push(<td key={cellID} ><KnowledgeBubble ObjectClick={this.HandleUnKnownClick} skill={this.state.KnowledgeList[counter].Skill} description ={this.state.KnowledgeList[counter].SkillDescription } id={counter} backgroundColor="red"></KnowledgeBubble></td>)
+                        cell.push(<td key={cellID} ><KnowledgeBubble ObjectClick={this.HandleUnKnownClick} skill={this.state.KnowledgeList[counter].Skill} description ={this.state.KnowledgeList[counter].SkillDescription } id={counter} imageLink={this.state.KnowledgeList[counter].ImageLink} backgroundColor="red"></KnowledgeBubble></td>)
                     }
                     else
                     {
-                        cell.push(<td key={cellID} ><KnowledgeBubble ObjectClick={this.HandleUnKnownClick}  skill={this.state.KnowledgeList[counter].Skill} description ={this.state.KnowledgeList[counter].SkillDescription } id={counter} backgroundColor="white"></KnowledgeBubble></td>)
+                        cell.push(<td key={cellID} ><KnowledgeBubble ObjectClick={this.HandleUnKnownClick}  skill={this.state.KnowledgeList[counter].Skill} description ={this.state.KnowledgeList[counter].SkillDescription } id={counter} imageLink={this.state.KnowledgeList[counter].ImageLink} backgroundColor="white"></KnowledgeBubble></td>)
                     } 
                 }
              
@@ -90,11 +80,9 @@ export default class KnowledgeList extends Component  {
     HandleKnownClick(id)
     {
         let knowledge = this.state.KnowledgeKnownClicked;
-        console.log("handle item click happened: " + id);
         var found = false;
         for(var i = 0;i < knowledge.length;i++)
         {   
-            console.log("KnowledgeID: " + knowledge[i])
             if(id === knowledge[i])
             {
                 found = true;
@@ -105,19 +93,15 @@ export default class KnowledgeList extends Component  {
         {
             knowledge.push(id);
         }
-        console.log(knowledge);
         this.setState(state => ({ KnowledgeKnownClicked: knowledge }))
     }
 
     HandleUnKnownClick(id)
     {
         let knowledge = this.state.KnowledgeUnknownClick;
-        console.log("knowledge: " + knowledge)
-        console.log("handle item click happened: " + id);
         var found = false;
         for(var i = 0;i < knowledge.length;i++)
         {   
-            console.log("KnowledgeID: " + knowledge[i])
             if(id === knowledge[i])
             {
                 found = true;
@@ -128,7 +112,6 @@ export default class KnowledgeList extends Component  {
         {
             knowledge.push(id);
         }
-        console.log(knowledge);
         this.setState(state => ({ KnowledgeUnknownClick: knowledge }))
     }
 
@@ -140,7 +123,6 @@ export default class KnowledgeList extends Component  {
 
     RenderButton()
     {
-        console.log("getting into render button");
         if(this.state.KnownOrUnKnown == 0)
         {
             return <Button onClick={this.SwitchState}>Switch To Knowledge to learn</Button>
@@ -156,9 +138,9 @@ export default class KnowledgeList extends Component  {
         
         return(
         <table id="simple-board">
-            <tbody>
-                {rows}
-                {this.RenderButton()}
+            <tbody> 
+                {rows} 
+                {this.RenderButton()} 
             </tbody>
         </table>              
         )
