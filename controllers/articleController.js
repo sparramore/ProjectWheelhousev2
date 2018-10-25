@@ -3,11 +3,18 @@ const db = require("../models/article");
 
 module.exports = {
     findAll: function(req, res) {
-      db.Article
-        .find(req.query)
-        .sort({LinkUrl: asc })
-        .then(dbModel => res.json(dbModel))
-        .catch(err => res.status(422).json(err));
+      db.article
+        .find({})
+        .sort("asc")
+        .then(function(dbModel){
+          console.log("dbModel:" + dbModel);
+          res.json(dbModel);
+          
+        })
+        .catch(err => {
+          res.status(422).json(err)
+          console.log("database error :" + err);
+        });
     },
     findById: function(req, res) {
       db.Article

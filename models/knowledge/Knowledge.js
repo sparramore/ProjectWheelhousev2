@@ -11,6 +11,6 @@ var KnowledgeSchema = new Schema({
 }]
 });
 
-var Knowledge = mongoose.model("Knowledge", KnowledgeSchema);
+var Knowledge = mongoose.model("knowledges", KnowledgeSchema);
 
 module.exports = Knowledge;
