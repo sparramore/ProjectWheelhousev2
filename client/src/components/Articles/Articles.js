@@ -12,12 +12,17 @@ export default class Article extends React.Component {
         this.LoadArticles = this.LoadArticles.bind(this);
     }
 
-    pushIntoArticles(articleList,index)
+    pushIntoArticles(articleList,index,Language)
     {
-        for(var i = 0; i < this.state.AllArticleList[index].length;i++)
+        console.log("language : " + Language);
+        for(var i = 0; i < this.state.AllArticleList.length;i++)
         {
-          
-          articleList.push(this.props.ArticlesToShow[index][i]);
+          console.log("language in link: " + this.state.AllArticleList[i].Language);
+          if(this.state.AllArticleList[i].Language == Language)
+          {
+            console.log("match for c++")
+            articleList.push(this.state.AllArticleList[i]);
+          }
         }
     }
 
@@ -32,42 +37,42 @@ export default class Article extends React.Component {
           case "c++":
           {
             console.log("pushing into c++");
-            this.pushIntoArticles(articles,i);
+            this.pushIntoArticles(articles,i,"cpp");
             break;
           }
           case "Java":
           {
-            this.pushIntoArticles(articles,i);
+            this.pushIntoArticles(articles,i,"java");
             break;
           }
           case "Javascript":
           {
-            this.pushIntoArticles(articles,i);
+            this.pushIntoArticles(articles,i,"javascript");
             break;
           }
           case "c#":
           {
-            this.pushIntoArticles(articles,i);
+            this.pushIntoArticles(articles,i,"c#");
             break;
           }
           case "PHP":
           {
-            this.pushIntoArticles(articles,i);
+            this.pushIntoArticles(articles,i,"php");
             break;
           }
           case "Python":
           {
-            this.pushIntoArticles(articles,i);
+            this.pushIntoArticles(articles,i,"python");
             break;
           }
           case "c":
           {
-            this.pushIntoArticles(articles,i);
+            this.pushIntoArticles(articles,i,"c");
             break;
           }
           case "SQL":
           {
-            this.pushIntoArticles(articles,i);
+            this.pushIntoArticles(articles,i,"sql");
             break;
           }
         }
@@ -82,16 +87,15 @@ export default class Article extends React.Component {
         {
             console.log("setting the state");
             this.setState({AllArticleList:res.data});
+            this.LoadArticles();
         });
-
-        this.LoadArticles();
 
     }
     //not ever really going to use this in production, I just need to make sure there are no redundant articles
     RenderAll()
     {
       let rows = [];
-
+       console.log(this.state.Articles);
        for(var i = 0;i < this.state.Articles.length;i++)
         {
          rows.push(<div>{this.state.Articles[i].LinkName}</div>)
