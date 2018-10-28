@@ -46,7 +46,7 @@ export default class KnowledgeList extends Component  {
             let cell = [];
             for (var idx = 0; idx < this.state.KnowledgeList.length/2; idx++){
                 let cellID = `cell${i}-${idx}`;
-                if(type == false)
+                if(type === false)
                 {
                     if(this.state.KnowledgeKnownClicked.includes(counter))
                     {
@@ -112,6 +112,9 @@ export default class KnowledgeList extends Component  {
         {
             knowledge.push(id);
         }
+        console.log("KnowledgeList-knowledge : " + knowledge.length);
+        console.log("KnowledgeList-KnowledgeList : " + this.state.KnowledgeList[1].Skill);
+        this.props.ObjectClick(knowledge,this.state.KnowledgeList);
         this.setState(state => ({ KnowledgeUnknownClick: knowledge }))
     }
 
@@ -123,7 +126,7 @@ export default class KnowledgeList extends Component  {
 
     RenderButton()
     {
-        if(this.state.KnownOrUnKnown == 0)
+        if(this.state.KnownOrUnKnown === 0)
         {
             return <Button onClick={this.SwitchState}>Switch To Knowledge to learn</Button>
         }

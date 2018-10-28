@@ -16,11 +16,12 @@ export default class Home extends React.Component {
 	constructor(props)
 	{
 		super(props);
-		this.state = { currentState: 0, open: false}
+		this.state = { currentState: 0, open: false, KnowledgeToLearn: []}
 		this.toggleButton = this.toggleButton.bind(this);
 		this.handleMenuCick = this.handleMenuCick.bind(this);
 		this.handleMenuSelection = this.handleMenuSelection.bind(this);
 		this.Rendermain = this.Rendermain.bind(this);
+		this.handleObjectClick = this.handleObjectClick.bind(this);
 	}
 
 	handleMenuCick()
@@ -39,6 +40,18 @@ export default class Home extends React.Component {
 	{
 		console.log("toggling");
 		this.setState(state => ({ open: !state.open }));
+	}
+
+	handleObjectClick(clicked,knowledge)
+	{
+		var toLearn = [];
+		for(var i = 0;i < clicked.length;i++)
+		{
+			console.log("Knowledge information: " + knowledge[i].Skill);
+			toLearn.push(knowledge[i]);
+		}
+		console.log("ToLearn : "  + toLearn);
+		this.setState(state => ({KnowledgeToLearn: toLearn}));
 	}
 
 	
@@ -69,13 +82,12 @@ export default class Home extends React.Component {
 		return(
 		<div>
 			<Dashboard MenuClick={this.handleMenuCick} open={this.state.open} toggleButton={this.toggleButton} MenuSelection={this.handleMenuSelection} />
-			<Article />
+			<Article ArticlesToShow={this.state.KnowledgeToLearn} Object={"object"}/>
 		</div>);
 	}
 }
 
 	render(){
-
 		return (	
 			<div>
 				{this.Rendermain()}

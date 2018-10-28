@@ -40,4 +40,37 @@ export default {
   saveArticle: function(articleData) {
     return axios.post("/api/articles", articleData);
   },
+  scrapecpp: function()
+  {
+    return axios.get("api/cpp");
+  },
+  scrapejava: function()
+  {
+    return axios.get("api/java");
+  },
+  scrapejavascript: function()
+  {
+    return axios.get("api/javascript");
+  },
+  scrapecsharp: function()
+  {
+    return axios.get("api/csharp");
+  },
+  scrapephp: function()
+  {
+    return axios.get("api/php");
+  },
+  scrapepython: function()
+  {
+    return axios.get("api/python");
+  },
+  scrapec: function()
+  {
+    return axios.get("api/c");
+  },
+  scrapesql: function()
+  {
+    return axios.get("api/sql");
+  }
+    
 };
