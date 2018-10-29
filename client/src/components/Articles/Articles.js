@@ -91,15 +91,59 @@ export default class Article extends React.Component {
         });
 
     }
+    fillArticle(list)
+    {
+        let returnArray = [];
+        for(var i = 0;i < list.length;i++)
+        {
+            returnArray.push(<p>{list[i].LinkName}: <a href={list[i].LinkUrl}>Link</a></p>)
+        }
+        return returnArray;
+    }
     //not ever really going to use this in production, I just need to make sure there are no redundant articles
     RenderAll()
     {
       let rows = [];
-       console.log(this.state.Articles);
-       for(var i = 0;i < this.state.Articles.length;i++)
+      
+      //going through the list of Articles and then storing them based on their language in a LanguageObject with a list of the Articles
+      let Articles = [];
+      let LanguageObject = {LanguagName:"",ArticleList: []};
+      if(this.state.Articles.length.length > 0)
+      {
+        LanguageObject.ArticleList.push(this.state.Articles[0]);
+        LanguageObject.LanguagName = this.state.Articles[0].Language;
+        Articles.push(LanguageObject);
+      }
+      //go through the list of state articles and for each compare it to the already stored LanguageObjects.
+      //if we already have a language object of the current state articles language then push into the language object
+      //otherwise create a new language object and push it into the Articles.
+      for(var i = 1;i < this.state.Articles.length;i++)
+      {
+        let foundHome = false;
+        for(var y = 0; y < Articles.length;y++)
         {
-         rows.push(<div>{this.state.Articles[i].LinkName}</div>)
+          if(Articles[y].LanguagName === this.state.Articles[i].Language)
+          {
+             Articles[y].ArticleList.push(this.state.Articles[i]);
+             foundHome = true;
+          }
         }
+        if(foundHome === false)
+        {
+          let LanguageObject = {LanguagName:"",ArticleList: []};
+          LanguageObject.ArticleList.push(this.state.Articles[i]);
+          LanguageObject.LanguagName = this.state.Articles[i].Language;
+          Articles.push(LanguageObject);
+        }
+      }
+      //actual rendering
+      for(var i = 0;i < Articles.length;i++)
+      {
+          rows.push(<div>
+            <h2>{Articles[i].LanguagName}</h2>
+            {this.fillArticle(Articles[i].ArticleList)}
+            </div>)
+      }
       return rows;
     }
     

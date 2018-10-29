@@ -3,7 +3,7 @@ import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 
 const appStyle = {
-	paddingTop: '10%'
+	paddingTop: '100%'
   };
 
 
@@ -15,7 +15,6 @@ export default class About extends React.Component {
 
     componentDidMount()
     {
-        console.log("component mounted");
 
     }
 
@@ -30,9 +29,6 @@ export default class About extends React.Component {
                 <Paper style={appStyle}>
                 
                 </Paper>
-                <Button className="SubmitButton" onClick={this.handleClick}>
-                Sign Up!
-                </Button>
             </div>
 
         );
