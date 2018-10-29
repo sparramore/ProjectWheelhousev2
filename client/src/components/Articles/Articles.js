@@ -20,7 +20,6 @@ export default class Article extends React.Component {
           console.log("language in link: " + this.state.AllArticleList[i].Language);
           if(this.state.AllArticleList[i].Language == Language)
           {
-            console.log("match for c++")
             articleList.push(this.state.AllArticleList[i]);
           }
         }
@@ -32,6 +31,7 @@ export default class Article extends React.Component {
       console.log("getting into Load Articles")
       for(var i = 0; i < this.props.ArticlesToShow.length;i++)
       {
+        console.log(this.props.ArticlesToShow[i].Skill);
         switch(this.props.ArticlesToShow[i].Skill)
         {
           case "c++":
@@ -42,6 +42,7 @@ export default class Article extends React.Component {
           }
           case "Java":
           {
+            console.log("pushing into java");
             this.pushIntoArticles(articles,i,"java");
             break;
           }
@@ -77,7 +78,6 @@ export default class Article extends React.Component {
           }
         }
       }
-      console.log("articles : " + articles);
       this.setState({Articles:articles});
     }
 

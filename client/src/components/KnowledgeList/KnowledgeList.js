@@ -35,7 +35,9 @@ export default class KnowledgeList extends Component  {
             console.log(res.data);
             this.setState({KnowledgeList:res.data});
         });
-
+        console.log("props Object to Learn" + this.props.ObjectToLearn);
+        this.setState({KnowledgeUnknownClick:this.props.ObjectToLearn});
+        console.log("KnowledgeKnownClicked: " + this.state.KnowledgeUnknownClick);
       }
 
       createBubbles(type){
@@ -94,11 +96,12 @@ export default class KnowledgeList extends Component  {
         {
             knowledge.push(id);
         }
-        this.setState(state => ({ KnowledgeKnownClicked: knowledge }))
+        this.setState(state => ({ KnowledgeKnownClicked: knowledge }));
     }
 
     HandleUnKnownClick(id)
     {
+        console.log("knowledge Known Clicked : " + this.state.KnowledgeKnownClicked)
         let knowledge = this.state.KnowledgeUnknownClick;
         var found = false;
         for(var i = 0;i < knowledge.length;i++)

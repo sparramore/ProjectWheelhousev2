@@ -34,6 +34,7 @@ function MediaCard(props) {
   const { classes } = props;
   function HandleClick()
   {
+    console.log("clicked")
     props.ObjectClick(props.id);
   }
   const BKColor = props.backgroundColor == "red" ? {background: 'red'} : {background: 'white'};

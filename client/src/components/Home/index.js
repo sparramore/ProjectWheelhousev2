@@ -16,7 +16,7 @@ export default class Home extends React.Component {
 	constructor(props)
 	{
 		super(props);
-		this.state = { currentState: 0, open: false, KnowledgeToLearn: []}
+		this.state = { currentState: 0, open: false, KnowledgeToLearn: [],clicked: []}
 		this.toggleButton = this.toggleButton.bind(this);
 		this.handleMenuCick = this.handleMenuCick.bind(this);
 		this.handleMenuSelection = this.handleMenuSelection.bind(this);
@@ -45,13 +45,15 @@ export default class Home extends React.Component {
 	handleObjectClick(clicked,knowledge)
 	{
 		var toLearn = [];
+		console.log("clicked before: " + clicked);
 		for(var i = 0;i < clicked.length;i++)
 		{
 			console.log("Knowledge information: " + knowledge[i].Skill);
-			toLearn.push(knowledge[i]);
+			console.log("clickedInfo: " + clicked);
+			toLearn.push(knowledge[clicked[i]]);
 		}
 		console.log("ToLearn : "  + toLearn);
-		this.setState(state => ({KnowledgeToLearn: toLearn}));
+		this.setState(state => ({KnowledgeToLearn: toLearn,clicked: clicked}));
 	}
 
 	
@@ -64,7 +66,7 @@ export default class Home extends React.Component {
 		return(
 		<div>
 			<Dashboard MenuClick={this.handleMenuCick} open={this.state.open} toggleButton={this.toggleButton} MenuSelection={this.handleMenuSelection} />
-			<KnowledgeList ObjectClick={this.handleObjectClick} />
+			<KnowledgeList ObjectClick={this.handleObjectClick} ObjectToLearn={this.state.clicked} />
 		</div>);
 	}
 	else if(this.state.currentState == 0) 
