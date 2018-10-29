@@ -32,6 +32,7 @@ export default class KnowledgeList extends Component  {
     componentDidMount() {
         API.getKnowledges().then( res => 
         {
+            console.log(res.data);
             this.setState({KnowledgeList:res.data});
         });
 
