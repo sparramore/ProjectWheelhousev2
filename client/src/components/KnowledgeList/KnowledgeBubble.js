@@ -37,7 +37,7 @@ function MediaCard(props) {
     console.log("clicked")
     props.ObjectClick(props.id);
   }
-  const BKColor = props.backgroundColor == "red" ? {background: 'red'} : {background: 'white'};
+  const BKColor = props.backgroundColor == "darkslateblue" ? {background: 'slateblue'} : {background: 'white'};
   let Image;
   //this is hacky, but I don't have time to integrate webpack and I'm not sure my files are structured properly.yarn
   switch(props.imageLink)
@@ -87,12 +87,6 @@ function MediaCard(props) {
   return (
     <Card className={classes.card} onClick={HandleClick} style={BKColor}>
       <CardActionArea>
-        <CardMedia 
-          component="img"
-          style={styles.media}
-          image={Image}
-          title={props.skill}
-        />
         <CardContent>
           <Typography gutterBottom variant="headline" component="h2">
             {props.skill}

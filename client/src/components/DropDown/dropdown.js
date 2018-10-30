@@ -65,8 +65,8 @@ class MenuListComposition extends React.Component {
                 <Paper>
                   <ClickAwayListener onClickAway={this.props.HandleClick}>
                     <MenuList >
-                      <MenuItem onClick={() => this.OnChangeFunction(0)}>Profile</MenuItem>
-                      <MenuItem onClick={() => this.OnChangeFunction(1)}>My account</MenuItem>
+                      <MenuItem onClick={() => this.OnChangeFunction(0)}>About</MenuItem>
+                      <MenuItem onClick={() => this.OnChangeFunction(1)}>Skills</MenuItem>
                       <MenuItem onClick={() => this.OnChangeFunction(2)}>Articles</MenuItem>
                     </MenuList>
                   </ClickAwayListener>

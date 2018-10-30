@@ -53,7 +53,7 @@ export default class KnowledgeList extends Component  {
                 {
                     if(this.state.KnowledgeKnownClicked.includes(counter))
                     {
-                        cell.push(<td key={cellID} ><KnowledgeBubble ObjectClick={this.HandleKnownClick} skill={this.state.KnowledgeList[counter].Skill} description ={this.state.KnowledgeList[counter].SkillDescription } id={counter} imageLink={this.state.KnowledgeList[counter].ImageLink} backgroundColor="red"></KnowledgeBubble></td>)
+                        cell.push(<td key={cellID} ><KnowledgeBubble ObjectClick={this.HandleKnownClick} skill={this.state.KnowledgeList[counter].Skill} description ={this.state.KnowledgeList[counter].SkillDescription } id={counter} imageLink={this.state.KnowledgeList[counter].ImageLink} backgroundColor="darkslateblue"></KnowledgeBubble></td>)
                     }
                     else
                     {
@@ -64,7 +64,7 @@ export default class KnowledgeList extends Component  {
                 {
                     if(this.state.KnowledgeUnknownClick.includes(counter))
                     {
-                        cell.push(<td key={cellID} ><KnowledgeBubble ObjectClick={this.HandleUnKnownClick} skill={this.state.KnowledgeList[counter].Skill} description ={this.state.KnowledgeList[counter].SkillDescription } id={counter} imageLink={this.state.KnowledgeList[counter].ImageLink} backgroundColor="red"></KnowledgeBubble></td>)
+                        cell.push(<td key={cellID} ><KnowledgeBubble ObjectClick={this.HandleUnKnownClick} skill={this.state.KnowledgeList[counter].Skill} description ={this.state.KnowledgeList[counter].SkillDescription } id={counter} imageLink={this.state.KnowledgeList[counter].ImageLink} backgroundColor="darkslateblue"></KnowledgeBubble></td>)
                     }
                     else
                     {
@@ -146,8 +146,7 @@ export default class KnowledgeList extends Component  {
         return(
         <table id="simple-board">
             <tbody> 
-                {rows} 
-                {this.RenderButton()} 
+                {rows}  
             </tbody>
         </table>              
         )
