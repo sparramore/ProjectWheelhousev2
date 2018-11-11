@@ -124,13 +124,15 @@ export default class KnowledgeList extends Component  {
 
     SwitchState()
     {
-        let stateObject = this.state.KnownOrUnKnown;
-        this.setState(state => ({ KnownOrUnKnown: !stateObject }))
+        console.log("state " + this.state.KnownOrUnKnown);
+        console.log("!state " + !this.state.KnownOrUnKnown);
+        this.setState(state => ({ KnownOrUnKnown: !this.state.KnownOrUnKnown }));
+        console.log("state after " + this.state.KnownOrUnKnown);
     }
 
     RenderButton()
     {
-        if(this.state.KnownOrUnKnown === 0)
+        if(this.state.KnownOrUnKnown === true)
         {
             return <Button onClick={this.SwitchState}>Switch To Knowledge to learn</Button>
         }
@@ -146,7 +148,8 @@ export default class KnowledgeList extends Component  {
         return(
         <table id="simple-board">
             <tbody> 
-                {rows}  
+                {rows}
+                {this.RenderButton()} 
             </tbody>
         </table>              
         )

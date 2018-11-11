@@ -1,5 +1,6 @@
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
+var uniqueValidator = require('mongoose-unique-validator');
 
 var KnowledgeSchema = new Schema({
   Skill: {type: String, required:true},
@@ -10,6 +11,8 @@ var KnowledgeSchema = new Schema({
     required: true
 }]
 });
+
+KnowledgeSchema.plugin(uniqueValidator);
 
 var Knowledge = mongoose.model("knowledges", KnowledgeSchema);
 

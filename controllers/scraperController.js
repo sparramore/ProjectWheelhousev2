@@ -48,7 +48,7 @@ module.exports = {
             var $ = cheerio.load(html);
             $("article header h2 a").each(function (i, element) {
 
-
+                console.log("javascript scrapped");
                 var result = {};
 
                 result.LinkName = $(element).text();
