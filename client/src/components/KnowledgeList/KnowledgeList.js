@@ -3,6 +3,7 @@ import "./KnowledgeList.css";
 import KnowledgeBubble from "./KnowledgeBubble"
 import API from "../../utils/API";
 import Button from '@material-ui/core/Button'
+import KnowledgeCloud from "../KnowledgeCloud/KnowledgeCloud"
 
 /*
 pull information for all of the knowledge from the database
@@ -149,7 +150,8 @@ export default class KnowledgeList extends Component  {
         <table id="simple-board">
             <tbody> 
                 {rows}
-                {this.RenderButton()} 
+                {this.RenderButton()}
+                <KnowledgeCloud /> 
             </tbody>
         </table>              
         )
