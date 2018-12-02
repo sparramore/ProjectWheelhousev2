@@ -145,15 +145,16 @@ export default class KnowledgeList extends Component  {
 
     render (){
         let rows = this.state.KnownOrUnKnown? this.createBubbles(0): this.createBubbles(1);
-        
+        console.log("rows: "  + rows);
         return(
-        <table id="simple-board">
-            <tbody> 
-                {rows}
-                {this.RenderButton()}
-                <KnowledgeCloud /> 
-            </tbody>
-        </table>              
+        <KnowledgeCloud />
+        // <table id="simple-board">
+        //     <tbody id="board-body"> 
+        //         {/* {rows} */}
+        //         {/* {this.RenderButton()} */}
+                
+        //     </tbody>
+        // </table>              
         )
 
     }

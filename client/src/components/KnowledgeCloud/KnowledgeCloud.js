@@ -3,98 +3,141 @@ import randomColor from 'randomcolor';
 import TagCloud from 'react-tag-cloud';
 import CloudItem from './CloudItem';
 import './KnowledgeCloud.css';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+import API from "../../utils/API";
 
 const styles = {
-  large: {
-    fontSize: 60,
-    fontWeight: 'bold'
-  },
-  small: {
-    opacity: 0.7,
-    fontSize: 16
-  }
+    large: {
+        fontSize: 60,
+        fontWeight: 'bold'
+    },
+    small: {
+        opacity: 0.7,
+        fontSize: 16
+    }
 };
 
 class KnowledgeCloud extends Component {
-  componentDidMount() {
-    setInterval(() => {
-      this.forceUpdate();
-    }, 3000);
-  }
+    constructor(props) {
+        super(props);
+        this.state = {
+            KnowledgeList: [],
+            clicked: []
+        }
+        //this.HandleKnownClick = this.HandleKnownClick.bind(this);
+        this.RenderCards = this.RenderCards.bind(this);
+    }
 
-  render() {
-    return (
-      <div className='app-outer'>
-        <div className='app-inner'>
-          <h1>react-tag-cloud demo</h1>
-          <TagCloud 
-            className='tag-cloud'
-            style={{
-              fontFamily: 'sans-serif',
-              //fontSize: () => Math.round(Math.random() * 50) + 16,
-              fontSize: 30,
-              color: () => randomColor({
-                hue: 'blue'
-              }),
-              padding: 5,
-            }}>
-            <div
-              style={{
-                fontFamily: 'serif',
-                fontSize: 40,
-                fontStyle: 'italic',
-                fontWeight: 'bold',
-                color: randomColor()
-              }}>Futurama</div>
-            <CloudItem text="Custom item, Hover me!" />
-            <CloudItem text="Custom item 2, Hover me!" />
-            <div style={styles.large}>Transformers</div>
-            <div style={styles.large}>Simpsons</div>
-            <div style={styles.large}>Dragon Ball</div>
-            <div style={styles.large}>Rick & Morty</div>
-            <div style={{fontFamily: 'courier'}}>He man</div>
-            <div style={{fontSize: 30}}>World trigger</div>
-            <div style={{fontStyle: 'italic'}}>Avengers</div>
-            <div style={{fontWeight: 200}}>Family Guy</div>
-            <div style={{color: 'green'}}>American Dad</div>
-            <div className="tag-item-wrapper">
-              <div>
-                Hover Me Please!
-              </div>
-              <div className="tag-item-tooltip">
-                HOVERED!
-              </div>
+    // RenderCards() {
+    //     let cards = [];
+    //     console.log("KnowledgeList Length: " + this.state.KnowledgeList.length)
+    //     for (var i = 0; i < this.state.KnowledgeList.length; i++) {
+    //         console.log("Skill: " + this.state.KnowledgeList[i].Skill);
+    //         console.log("Skill Description: " + this.state.KnowledgeList[i].SkillDescription);
+    //         cards.push(<Card key="i">
+    //             <CardActionArea>
+    //                 <CardContent>
+    //                     <Typography gutterBottom variant="headline" component="h2">
+    //                         {this.state.KnowledgeList[i].Skill}
+    //                     </Typography>
+    //                     <Typography component="p">
+    //                         {this.state.KnowledgeList[i].SkillDescription}
+    //                     </Typography>
+    //                 </CardContent>
+    //             </CardActionArea>
+    //             <CardActions>
+    //             </CardActions>
+    //         </Card>)
+    //     }
+    //     console.log("Cards: " + cards)
+    //     return cards;
+    // }
+
+    RenderCards() {
+        let cards = [];
+        console.log("KnowledgeList Length: " + this.state.KnowledgeList.length)
+        for (var i = 0; i < this.state.KnowledgeList.length; i++) {
+            console.log("Skill: " + this.state.KnowledgeList[i].Skill);
+            console.log("Skill Description: " + this.state.KnowledgeList[i].SkillDescription);
+            cards.push(<div>this.state.KnowledgeList[i].Skill</div>)
+        }
+        console.log("Cards: " + cards)
+        return cards;
+    }
+
+
+    componentDidMount() {
+        API.getKnowledges().then(res => {
+            console.log(res.data);
+            this.setState({ KnowledgeList: res.data });
+        });
+        //this.setState({KnowledgeUnknownClick:this.props.ObjectToLearn});
+        // setInterval(() => {
+        //     this.forceUpdate();
+        // }, 3000);
+    }
+
+    render() {
+        let cards = this.RenderCards();
+        return (
+            <div className='app-outer'>
+                <div className='app-inner'>
+                    <h1>react-tag-cloud demo</h1>
+                    <TagCloud
+                        className='tag-cloud'
+                        style={{
+                            fontFamily: 'sans-serif',
+                            //fontSize: () => Math.round(Math.random() * 50) + 16,
+                            fontSize: 30,
+                            color: () => randomColor({
+                                hue: 'blue'
+                            }),
+                            padding: 5,
+                        }}>
+                        {/* {cards} */}
+                        {this.state.KnowledgeList.map(function (k, idx) {
+                            return (
+                                <Card key="idx">
+                                    <CardActionArea>
+                                        <CardContent>
+                                            <Typography gutterBottom variant="headline" component="h2">
+                                                {k.Skill}
+                                            </Typography>
+                                            <Typography component="p">
+                                                {k.SkillDescription}
+                                            </Typography>
+                                        </CardContent>
+                                    </CardActionArea>
+                                    <CardActions>
+                                    </CardActions>
+                                </Card>
+                            )
+                        })}
+                        {/* <Card>
+                            <CardActionArea>
+                                <CardContent>
+                                    <Typography gutterBottom variant="headline" component="h2">
+                                        c++
+                                    </Typography>
+                                    <Typography component="p">
+                                        blahblahblah
+                                    </Typography>
+                                </CardContent>
+                            </CardActionArea>
+                            <CardActions>
+                            </CardActions>
+                        </Card> */}
+                    </TagCloud>
+                </div>
             </div>
-            <div>Gobots</div>
-            <div>Thundercats</div>
-            <div><a href="http://www.google.com">M.A.S.K</a></div>
-            <div>GI Joe</div>
-            <div>Inspector Gadget</div>
-            <div>Bugs Bunny</div>
-            <div>Tom & Jerry</div>
-            <div>Cowboy Bebop</div>
-            <div>Evangelion</div>
-            <div>Bleach</div>
-            <div>GITS</div>
-            <div>Pokemon</div>
-            <div>She Ra</div>
-            <div>Fullmetal Alchemist</div>
-            <div>Gundam</div>
-            <div>Uni Taisen</div>
-            <div>Pinky and the Brain</div>
-            <div>Bobs Burgers</div>
-            <div style={styles.small}>Dino Riders</div>
-            <div style={styles.small}>Silverhawks</div>
-            <div style={styles.small}>Bravestar</div>
-            <div style={styles.small}>Starcom</div>
-            <div style={styles.small}>Cops</div>
-            <div style={styles.small}>Alfred J. Kwak</div>
-            <div style={styles.small}>Dr Snuggles</div>
-          </TagCloud>
-        </div>
-      </div>
-    );
-  }
+        );
+    }
 }
 
 export default KnowledgeCloud;
